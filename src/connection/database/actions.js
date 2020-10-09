@@ -55,7 +55,7 @@ export function logIn(id, needsMFA = false) {
 
 export function signUp(id) {
   const m = read(getEntity, 'lock', id);
-  const fields = ['email', 'password'];
+  const fields = ['email', 'password', 'confirm_password'];
   if (databaseConnectionRequiresUsername(m)) fields.push('username');
   additionalSignUpFields(m).forEach(x => fields.push(x.get('name')));
 
