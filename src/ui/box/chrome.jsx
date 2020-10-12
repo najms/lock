@@ -256,7 +256,7 @@ export default class Chrome extends React.Component {
         key="global-error"
         message={wrapGlobalMessage(error)}
         type="error"
-        scrollIntoView={scrollGlobalMessagesIntoView}
+        scrollIntoView={false}
       />
     ) : null;
     const globalSuccess = success ? (
@@ -264,7 +264,7 @@ export default class Chrome extends React.Component {
         key="global-success"
         message={wrapGlobalMessage(success)}
         type="success"
-        scrollIntoView={scrollGlobalMessagesIntoView}
+        scrollIntoView={false}
       />
     ) : null;
     const globalInfo = info ? (
@@ -272,7 +272,7 @@ export default class Chrome extends React.Component {
         key="global-info"
         message={wrapGlobalMessage(info)}
         type="info"
-        scrollIntoView={scrollGlobalMessagesIntoView}
+        scrollIntoView={false}
       />
     ) : null;
 
@@ -300,23 +300,23 @@ export default class Chrome extends React.Component {
               className="auth0-lock-content-body-wrapper"
               style={{ marginTop: this.state.headerHeight }}
             >
-              <TransitionGroup>
-                <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}>
-                  <div>
-                    {globalSuccess}
-                    {globalError}
-                    {globalInfo}
-                  </div>
-                </CSSTransition>
-              </TransitionGroup>
+              {/* <TransitionGroup>
+                <CSSTransition classNames="global-message" timeout={MESSAGE_ANIMATION_DURATION}> */}
+              <div>
+                {globalSuccess}
+                {globalError}
+                {globalInfo}
+              </div>
+              {/* </CSSTransition>
+              </TransitionGroup> */}
               <div style={{ position: 'relative' }} ref="screen">
                 <MultisizeSlide
-                  delay={550}
+                  delay={0}
                   onDidAppear={::this.onDidAppear}
                   onDidSlide={::this.onDidSlide}
                   onWillSlide={::this.onWillSlide}
                   transitionName={classNames}
-                  reverse={reverse}
+                  reverse={false}
                 >
                   <div key={this.mainScreenName()} className="auth0-lock-view-content">
                     <div style={{ position: 'relative' }}>
