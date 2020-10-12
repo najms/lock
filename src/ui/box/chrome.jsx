@@ -107,6 +107,13 @@ export default class Chrome extends React.Component {
     }
   }
 
+  setFocusOnInput(input) {
+    input.focus();
+    let val = input.value;
+    input.value = '';
+    input.value = val;
+  }
+
   componentDidUpdate(prevProps) {
     const { autofocus, auxiliaryPane, error, screenName } = this.props;
 
@@ -117,7 +124,7 @@ export default class Chrome extends React.Component {
 
       if (input) {
         // TODO clear timeout
-        setTimeout(() => input.focus(), AUXILIARY_ANIMATION_DURATION);
+        setTimeout(() => this.setFocusOnInput(input), AUXILIARY_ANIMATION_DURATION);
       }
 
       return;
@@ -140,7 +147,7 @@ export default class Chrome extends React.Component {
           this.inputToFocus = input;
         } else {
           // TODO clear timeout
-          setTimeout(() => input.focus(), 17);
+          setTimeout(() => this.setFocusOnInput(input), 17);
         }
       }
     }
